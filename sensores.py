@@ -109,11 +109,15 @@ def process_data():
  
             # Graficar datos
             plt.figure(figsize=(10, 6))
-            plt.bar(["Humedad", "Temperatura", "Presión"], [avg_humidity, avg_temperature, avg_pressure], color=["blue", "red", "green"])
-            plt.title("Promedios de sensores en los últimos 15 minutos")
-            plt.ylabel("Valores Promedio")
+            s_n = ["Humedad", "Temperatura", "Presion"]
+            s_v = [avg_humidity, avg_temperature, avg_pressure]
+            
+            plt.plot(s_n, s_v, marker="o", linestyle="-", color="purple")
+            plt.title("Promedios de los sensores en los ultimos 15 minutos")
+            plt.ylabel("Valores promedio")
             plt.xlabel("Sensores")
-            plt.ylim(0, max(avg_humidity, avg_temperature, avg_pressure) + 10)
+            plt.ylim(0, max(s_v)+10)
+            plt.grid(True)
             plt.show()
         else:
             print("No se recibieron suficientes datos en los últimos 15 minutos.")
