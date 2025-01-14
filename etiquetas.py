@@ -20,9 +20,7 @@ def create_model():
  
 # Crear y cargar modelo (sustituir por un modelo entrenado si ya tienes uno)
 model = create_model()
-# Suponiendo que tienes un modelo entrenado guardado
-# model.load_weights('modelo_pesos.h5')  # Descomenta esta línea si tienes pesos preentrenados primero checar el modelo del entrenamiento
- 
+
 # Etiquetas: 0 = Incorrecta, 1 = Correcta
 labels = ["Incorrecta", "Correcta"]
  
