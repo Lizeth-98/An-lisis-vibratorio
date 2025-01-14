@@ -119,6 +119,7 @@ def process_data():
             plt.ylim(0, max(s_v)+10)
             plt.grid(True)
             plt.show()
+            
         else:
             print("No se recibieron suficientes datos en los últimos 15 minutos.")
  

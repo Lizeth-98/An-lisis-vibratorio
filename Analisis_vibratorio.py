@@ -30,7 +30,7 @@ X_scaled = scaler.fit_transform(X)
 #division datos en entrenamiento y prueba
 X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=45)
  
-# ntrenar el clasificador de la red neuronal
+# entrenar el clasificador de la red neuronal
 model = MLPClassifier(hidden_layer_sizes=(64, 32), max_iter=500, random_state=45)
 model.fit(X_train, y_train)
  
