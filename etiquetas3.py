@@ -8,7 +8,7 @@ pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tessera
 # Verifica si la imagen es legible
 def check_legibility(image):
     laplacian_var = cv2.Laplacian(image, cv2.CV_64F).var()
-    return laplacian_var > 100  # Ajusta el umbral según sea necesario
+    return laplacian_var > 100  # Ajustar el umbral deacuerdo a la necesario
  
 # Extrae texto del número de serie usando OCR
 def extract_text(image):
@@ -19,13 +19,13 @@ def extract_text(image):
  
 # Valida el formato del número de serie
 def validate_serial_number(serial_number):
-    # Define el patrón esperado del número de serie (modifica según tus requisitos)
-    pattern = r'^SN-\d{4}-[A-Z]{2}$'  # Ejemplo: SN-1234-AB
+    #definir patron 
+    pattern = r'^SN-\d{4}-[A-Z]{2}$'  # ejemplo simulado SN-1234-AB, falta para que pueda detectar todas las series y no solo una
     return bool(re.match(pattern, serial_number))
  
-# Sistema de visión en tiempo real
+# Sistema de vision en tiempo real
 def real_time_serial_validation():
-    cap = cv2.VideoCapture(0)  # Abre la cámara
+    cap = cv2.VideoCapture(0) 
  
     while True:
         ret, frame = cap.read()
@@ -33,11 +33,11 @@ def real_time_serial_validation():
             print("Error al capturar el video.")
             break
  
-        # Validar legibilidad
+        # legibilidad
         if not check_legibility(frame):
             result = "Imagen borrosa. Intente ajustar la cámara."
         else:
-            # Extraer y validar número de serie
+            # Extraer y validar num de serie
             serial_text = extract_text(frame)
             if not serial_text:
                 result = "No se pudo leer el número de serie."
@@ -57,6 +57,5 @@ def real_time_serial_validation():
     cap.release()
     cv2.destroyAllWindows()
  
-# *** EJECUCIÓN PRINCIPAL ***
 if __name__ == "__main__":
     real_time_serial_validation()
